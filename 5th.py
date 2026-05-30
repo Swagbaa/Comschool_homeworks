@@ -18,13 +18,25 @@
 
 # N2
 
-from datetime import datetime, timedelta
+# from datetime import datetime, timedelta
+#
+# today=datetime.today()
+#
+# samshabati=1
+# samshabatamde=(samshabati-today.weekday())%7
+#
+# shemdegi=today+timedelta(days=samshabatamde)
+#
+# print(shemdegi.date())
 
-today=datetime.today()
+# N3
 
-samshabati=1
-samshabatamde=(samshabati-today.weekday())%7
+while True:
+    user_input=input("შეიყვანეთ წელი: ")
 
-shemdegi=today+timedelta(days=samshabatamde)
+    if int(user_input)%4==0:
+        print("წელი ნაკიანია")
+    else:
+        print("არ არის ნაკიანი წელი")
 
-print(shemdegi.date())
+"""Calendar იმპორტით პირდაპირ .isleap(user_input)"""
