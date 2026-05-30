@@ -1,6 +1,8 @@
-#N1
+from itertools import permutations as perm
+from datetime import datetime, timedelta
+import calendar
 
-# from itertools import permutations as perm
+#N1 -----------------------------------------
 #
 # def possibilities(text):
 #     perms=[''.join(p) for p in perm(text)]
@@ -16,10 +18,8 @@
 #     user_input=input('Enter text: ')
 #     print(possibilities(user_input))
 
-# N2
+# N2------------------------------------------------
 
-# from datetime import datetime, timedelta
-#
 # today=datetime.today()
 #
 # samshabati=1
@@ -29,14 +29,24 @@
 #
 # print(shemdegi.date())
 
-# N3
+# N3 -------------------------------------------
 
-while True:
-    user_input=input("შეიყვანეთ წელი: ")
+# while True:
+#     user_input=input("შეიყვანეთ წელი: ")
+#
+#     if int(user_input)%4==0:
+#         print("წელი ნაკიანია")
+#     else:
+#         print("არ არის ნაკიანი წელი")
+#
+# """Calendar იმპორტით პირდაპირ .isleap(user_input)"""
 
-    if int(user_input)%4==0:
-        print("წელი ნაკიანია")
-    else:
-        print("არ არის ნაკიანი წელი")
+# N4 --------------------------------------------
 
-"""Calendar იმპორტით პირდაპირ .isleap(user_input)"""
+today = datetime.today()
+year_end=datetime(today.year, 12, 31)
+
+days_left=(year_end-today).days
+weeks_left=days_left//7
+
+print(weeks_left)
