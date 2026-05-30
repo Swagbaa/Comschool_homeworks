@@ -1,4 +1,4 @@
-from itertools import permutations as perm
+from itertools import permutations as perm, combinations as comb
 from datetime import datetime, timedelta
 import calendar
 
@@ -43,10 +43,17 @@ import calendar
 
 # N4 --------------------------------------------
 
-today = datetime.today()
-year_end=datetime(today.year, 12, 31)
+# today = datetime.today()
+# year_end=datetime(today.year, 12, 31)
+#
+# days_left=(year_end-today).days
+# weeks_left=days_left//7
+#
+# print(weeks_left)
 
-days_left=(year_end-today).days
-weeks_left=days_left//7
+# N5 -----------------------------------
 
-print(weeks_left)
+lst=[1, 2, 3, 4, 5]
+
+for combo in comb(lst, 3):
+    print(combo)
