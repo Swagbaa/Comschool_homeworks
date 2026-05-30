@@ -53,7 +53,16 @@ import calendar
 
 # N5 -----------------------------------
 
-lst=[1, 2, 3, 4, 5]
+# lst=[1, 2, 3, 4, 5]
+#
+# for combo in comb(lst, 3):
+#     print(combo)
 
-for combo in comb(lst, 3):
-    print(combo)
+# N6 --------------------------------
+
+s="XYZ"
+
+for i in range(1, 4):
+    for combo in comb(s, i):
+        print(''.join(combo))
+
