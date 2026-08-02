@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Field | ტექნოლოგიების სამყარო</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">&lt;IT_Field/&gt;</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">მთავარი</a></li>
+        <li class="nav-item"><a class="nav-link" href="#directions">მიმართულებები</a></li>
+        <li class="nav-item"><a class="nav-link" href="#video">ვიდეო</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">კონტაქტი</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="carousel-slide d-flex align-items-center justify-content-center slide-1">
+        <div class="text-center text-white">
+          <h1 class="display-4 fw-bold">კეთილი იყოს თქვენი მობრძანება IT Field-ზე</h1>
+          <p class="lead">სწავლა, პროგრამირება, კარიერა ტექნოლოგიებში</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="carousel-slide d-flex align-items-center justify-content-center slide-2">
+        <div class="text-center text-white">
+          <h1 class="display-4 fw-bold">Web Development</h1>
+          <p class="lead">HTML, CSS, JavaScript, Bootstrap</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="carousel-slide d-flex align-items-center justify-content-center slide-3">
+        <div class="text-center text-white">
+          <h1 class="display-4 fw-bold">Cybersecurity & Cloud</h1>
+          <p class="lead">დაცული და მასშტაბირებადი სისტემები</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<!-- DIRECTIONS / CARDS -->
+<section id="directions" class="container py-5">
+  <h2 class="text-center mb-5 section-title">IT მიმართულებები</h2>
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card h-100 tech-card">
+        <div class="card-body text-center">
+          <i class="bi bi-code-slash fs-1 mb-3 card-icon"></i>
+          <h5 class="card-title">Web Development</h5>
+          <p class="card-text">Frontend და Backend ტექნოლოგიების შესწავლა — React, Node.js, Django და სხვა.</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-topic="Web Development">დეტალურად</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 tech-card">
+        <div class="card-body text-center">
+          <i class="bi bi-shield-lock fs-1 mb-3 card-icon"></i>
+          <h5 class="card-title">Cybersecurity</h5>
+          <p class="card-text">ქსელური უსაფრთხოება, ეთიკური ჰაკინგი და მონაცემთა დაცვა.</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-topic="Cybersecurity">დეტალურად</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 tech-card">
+        <div class="card-body text-center">
+          <i class="bi bi-cloud-arrow-up fs-1 mb-3 card-icon"></i>
+          <h5 class="card-title">Cloud & DevOps</h5>
+          <p class="card-text">AWS, Docker, Kubernetes და CI/CD პროცესების ავტომატიზაცია.</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#infoModal" data-topic="Cloud & DevOps">დეტალურად</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="container text-center py-4">
+  <button class="btn btn-load" id="loadBtn">
+    <span class="spinner-border spinner-border-sm d-none" id="loadSpinner" role="status" aria-hidden="true"></span>
+    <span id="loadText">მონაცემების ჩატვირთვა</span>
+  </button>
+</section>
+
+<section id="video" class="container py-5">
+  <h2 class="text-center mb-4 section-title">რა არის პროგრამირება?</h2>
+  <div class="ratio ratio-16x9 video-frame mx-auto" style="max-width:800px;">
+    <iframe src="https://www.youtube.com/embed/zOjov-2OZ0E" title="Programming intro video" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section id="contact" class="py-5 contact-section">
+  <div class="container">
+    <h2 class="text-center mb-4 section-title-light">დაგვიკავშირდით</h2>
+    <form class="row g-3 mx-auto" style="max-width:600px;" onsubmit="return handleSubmit(event)">
+      <div class="col-md-6">
+        <label class="form-label text-light">სახელი</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-light">ელ-ფოსტა</label>
+        <input type="email" class="form-control" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label text-light">შეტყობინება</label>
+        <textarea class="form-control" rows="4" required></textarea>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-send px-5">გაგზავნა</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTopic">დეტალები</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p id="modalText">დამატებითი ინფორმაცია ამ IT მიმართულების შესახებ მალე დაემატება.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">დახურვა</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer text-light py-4">
+  <div class="container text-center">
+    <p class="mb-1">&copy; 2026 IT Field. ყველა უფლება დაცულია.</p>
+    <div>
+      <a href="#" class="text-light mx-2"><i class="bi bi-github"></i></a>
+      <a href="#" class="text-light mx-2"><i class="bi bi-linkedin"></i></a>
+      <a href="#" class="text-light mx-2"><i class="bi bi-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const infoModal = document.getElementById('infoModal');
+  infoModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const topic = button.getAttribute('data-topic');
+    document.getElementById('modalTopic').textContent = topic;
+  });
+
+  const loadBtn = document.getElementById('loadBtn');
+  loadBtn.addEventListener('click', function () {
+    const spinner = document.getElementById('loadSpinner');
+    const text = document.getElementById('loadText');
+    spinner.classList.remove('d-none');
+    text.textContent = 'იტვირთება...';
+    loadBtn.disabled = true;
+    setTimeout(() => {
+      spinner.classList.add('d-none');
+      text.textContent = 'ჩატვირთულია ✓';
+      loadBtn.disabled = false;
+    }, 2000);
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('მადლობა! თქვენი შეტყობინება გაიგზავნა.');
+    e.target.reset();
+    return false;
+  }
+</script>
+</body>
+</html>
