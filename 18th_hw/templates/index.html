@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}მთავარი - სტუდენტების სისტემა{% endblock %}
+
+{% block content %}
+    <h1>სტუდენტების სია</h1>
+
+    {% if students %}
+        <table style="width:100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
+            <thead>
+                <tr style="background: #34495e; color: #fff; text-align: left;">
+                    <th style="padding: 12px;">ID</th>
+                    <th style="padding: 12px;">სახელი</th>
+                    <th style="padding: 12px;">მეილი</th>
+                    <th style="padding: 12px;">კურსი</th>
+                    <th style="padding: 12px;">შეფასება</th>
+                    <th style="padding: 12px;">თარიღი</th>
+                    <th style="padding: 12px;">მოქმედება</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr style="border-bottom: 1px solid #ecf0f1;">
+                    <td style="padding: 12px;">{{ student.id }}</td>
+                    <td style="padding: 12px;">{{ student.name }}</td>
+                    <td style="padding: 12px;">{{ student.email }}</td>
+                    <td style="padding: 12px;">{{ student.course }}</td>
+                    <td style="padding: 12px;">{{ student.grade if student.grade is not none else '—' }}</td>
+                    <td style="padding: 12px;">{{ student.date_added.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td style="padding: 12px;">
+                        <form action="{{ url_for('delete_student', student_id=student.id) }}" method="POST" onsubmit="return confirm('დარწმუნებული ხართ?');">
+                            <button type="submit" style="background:#e74c3c; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;">წაშლა</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>სტუდენტები ჯერ არ არის დამატებული. <a href="{{ url_for('add_student') }}">დაამატეთ პირველი სტუდენტი</a>.</p>
+    {% endif %}
+{% endblock %}

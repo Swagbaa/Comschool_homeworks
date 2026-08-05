@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}სტუდენტის დამატება{% endblock %}
+
+{% block content %}
+    <h1>ახალი სტუდენტის დამატება</h1>
+
+    <form method="POST" style="background:#fff; padding:24px; border-radius:8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); max-width:480px;">
+        <div style="margin-bottom:16px;">
+            <label for="name" style="display:block; margin-bottom:6px; font-weight:600;">სახელი *</label>
+            <input type="text" id="name" name="name" required
+                   style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+        </div>
+
+        <div style="margin-bottom:16px;">
+            <label for="email" style="display:block; margin-bottom:6px; font-weight:600;">მეილი *</label>
+            <input type="email" id="email" name="email" required
+                   style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+        </div>
+
+        <div style="margin-bottom:16px;">
+            <label for="course" style="display:block; margin-bottom:6px; font-weight:600;">კურსი *</label>
+            <input type="text" id="course" name="course" required
+                   style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+        </div>
+
+        <div style="margin-bottom:16px;">
+            <label for="grade" style="display:block; margin-bottom:6px; font-weight:600;">შეფასება</label>
+            <input type="number" step="0.01" min="0" max="100" id="grade" name="grade"
+                   style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+        </div>
+
+        <button type="submit" style="background:#27ae60; color:#fff; border:none; padding:12px 24px; border-radius:5px; cursor:pointer; font-size:1rem;">
+            დამატება
+        </button>
+        <a href="{{ url_for('index') }}" style="margin-left:12px; color:#7f8c8d; text-decoration:none;">გაუქმება</a>
+    </form>
+{% endblock %}
