@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}შესვლა - SecureNotes{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>შესვლა</h2>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <label for="username">{{ form.username.label.text }}</label>
+    {{ form.username(placeholder="მომხმარებლის სახელი") }}
+    {% for error in form.username.errors %}
+      <div class="errors">{{ error }}</div>
+    {% endfor %}
+
+    <label for="password">{{ form.password.label.text }}</label>
+    {{ form.password(placeholder="პაროლი") }}
+    {% for error in form.password.errors %}
+      <div class="errors">{{ error }}</div>
+    {% endfor %}
+
+    {{ form.submit() }}
+  </form>
+  <p style="margin-top:1rem; color:var(--muted);">
+    არ გაქვთ ანგარიში? <a href="{{ url_for('register') }}" style="color:var(--accent);">დარეგისტრირდით</a>
+  </p>
+</div>
+{% endblock %}

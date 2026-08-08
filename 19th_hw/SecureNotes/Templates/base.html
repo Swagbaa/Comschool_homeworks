@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}SecureNotes{% endblock %}</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #6366f1;
+    --accent-hover: #4f46e5;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --warning: #eab308;
+    --info: #38bdf8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    min-height: 100vh;
+  }
+  nav {
+    background: var(--card);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 1.2rem;
+    font-weight: 500;
+  }
+  nav a:hover { color: var(--accent); }
+  .brand { font-weight: 700; font-size: 1.3rem; color: var(--accent); }
+  .container {
+    max-width: 700px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+  }
+  .card {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  }
+  input, textarea {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 0.4rem;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: var(--text);
+    font-size: 1rem;
+  }
+  textarea { min-height: 140px; resize: vertical; }
+  label { font-weight: 600; display: block; margin-top: 0.8rem; margin-bottom: 0.2rem; }
+  button, .btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    display: inline-block;
+    text-decoration: none;
+  }
+  button:hover, .btn:hover { background: var(--accent-hover); }
+  .btn-danger { background: var(--danger); }
+  .btn-danger:hover { background: #dc2626; }
+  .errors { color: var(--danger); font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .flash {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  .flash.success { background: rgba(34,197,94,0.15); color: var(--success); border: 1px solid var(--success); }
+  .flash.danger { background: rgba(239,68,68,0.15); color: var(--danger); border: 1px solid var(--danger); }
+  .flash.info { background: rgba(56,189,248,0.15); color: var(--info); border: 1px solid var(--info); }
+  .flash.warning { background: rgba(234,179,8,0.15); color: var(--warning); border: 1px solid var(--warning); }
+  .note-card {
+    background: var(--card);
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--accent);
+  }
+  .note-title { font-size: 1.15rem; font-weight: 700; margin: 0 0 0.4rem 0; }
+  .note-content { color: var(--muted); white-space: pre-wrap; margin-bottom: 0.6rem; }
+  .note-meta { font-size: 0.8rem; color: #64748b; }
+  .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+  form.inline { display: inline; margin: 0; }
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">SecureNotes</span>
+  <div>
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('notes') }}">ჩემი ჩანაწერები</a>
+      <a href="{{ url_for('add_note') }}">დამატება</a>
+      <a href="{{ url_for('logout') }}">გასვლა ({{ current_user.username }})</a>
+    {% else %}
+      <a href="{{ url_for('login') }}">შესვლა</a>
+      <a href="{{ url_for('register') }}">რეგისტრაცია</a>
+    {% endif %}
+  </div>
+</nav>
+
+<div class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

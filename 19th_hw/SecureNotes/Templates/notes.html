@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}ჩემი ჩანაწერები - SecureNotes{% endblock %}
+{% block content %}
+<div class="top-row">
+  <h2>ჩემი ჩანაწერები</h2>
+  <a href="{{ url_for('add_note') }}" class="btn">+ ახალი ჩანაწერი</a>
+</div>
+
+{% if notes %}
+  {% for note in notes %}
+    <div class="note-card">
+      <div class="note-title">{{ note.title }}</div>
+      <div class="note-content">{{ note.content }}</div>
+      <div class="note-meta">{{ note.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+      <form class="inline" method="POST" action="{{ url_for('delete_note', note_id=note.id) }}"
+            onsubmit="return confirm('დარწმუნებული ხართ, რომ გსურთ წაშლა?');">
+        <button type="submit" class="btn-danger" style="margin-top:0.6rem;">წაშლა</button>
+      </form>
+    </div>
+  {% endfor %}
+{% else %}
+  <div class="card">
+    <p style="color:var(--muted);">ჯერ არცერთი ჩანაწერი არ გაქვთ შექმნილი.</p>
+    <a href="{{ url_for('add_note') }}" class="btn">შექმენით პირველი ჩანაწერი</a>
+  </div>
+{% endif %}
+{% endblock %}

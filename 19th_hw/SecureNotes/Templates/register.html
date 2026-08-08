@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}რეგისტრაცია - SecureNotes{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>რეგისტრაცია</h2>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <label for="username">{{ form.username.label.text }}</label>
+    {{ form.username(placeholder="მომხმარებლის სახელი") }}
+    {% for error in form.username.errors %}
+      <div class="errors">{{ error }}</div>
+    {% endfor %}
+
+    <label for="password">{{ form.password.label.text }}</label>
+    {{ form.password(placeholder="პაროლი") }}
+    {% for error in form.password.errors %}
+      <div class="errors">{{ error }}</div>
+    {% endfor %}
+
+    <label for="confirm_password">{{ form.confirm_password.label.text }}</label>
+    {{ form.confirm_password(placeholder="გაიმეორეთ პაროლი") }}
+    {% for error in form.confirm_password.errors %}
+      <div class="errors">{{ error }}</div>
+    {% endfor %}
+
+    {{ form.submit() }}
+  </form>
+  <p style="margin-top:1rem; color:var(--muted);">
+    უკვე გაქვთ ანგარიში? <a href="{{ url_for('login') }}" style="color:var(--accent);">შესვლა</a>
+  </p>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}ახალი ჩანაწერი - SecureNotes{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>ახალი ჩანაწერის დამატება</h2>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <label for="title">{{ form.title.label.text }}</label>
+    {{ form.title(placeholder="სათაური") }}
+    {% for error in form.title.errors %}
+      <div class="errors">{{ error }}</div>
+    {% endfor %}
+
+    <label for="content">{{ form.content.label.text }}</label>
+    {{ form.content(placeholder="დაწერეთ თქვენი ჩანაწერი აქ...") }}
+    {% for error in form.content.errors %}
+      <div class="errors">{{ error }}</div>
+    {% endfor %}
+
+    {{ form.submit() }}
+  </form>
+</div>
+{% endblock %}
