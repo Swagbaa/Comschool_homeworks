@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_name }} - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">{{ site_name }}</div>
+            <ul class="nav-links">
+                {% for link in nav_links %}
+                    <li>
+                        <a href="{{ url_for(link.endpoint) }}"
+                           class="{% if active_page == link.endpoint %}active{% endif %}">
+                            {{ link.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} {{ site_name }}.</p>
+    </footer>
+
+</body>
+</html>

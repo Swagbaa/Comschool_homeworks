@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}ჩვენს შესახებ{% endblock %}
+
+{% block content %}
+    <section class="about">
+        <h1>ჩვენს შესახებ</h1>
+        <p>არაფერი საინტერესო</p>
+
+        <h2>გუნდის წევრები</h2>
+        <div class="team-list">
+            {% for member in team %}
+                <div class="team-member">
+                    <h3>{{ member.name }}</h3>
+                    <p>{{ member.role }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

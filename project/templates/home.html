@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}მთავარი{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <h1>კეთილი იყოს თქვენი მობრძანება {{ site_name }}-ზე</h1>
+        <p>Flask-ზე აგებული მარტივი მრავალგვერდიანი საიტი.</p>
+    </section>
+
+    <section class="features">
+        <h2>უპირატესობები</h2>
+        <ul>
+            {% for feature in features %}
+                <li>{{ feature }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

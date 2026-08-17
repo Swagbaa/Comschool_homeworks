@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}კონტაქტი{% endblock %}
+
+{% block content %}
+    <section class="contact">
+        <h1>დაგვიკავშირდით</h1>
+
+        {% if contact_info_available %}
+            <p>შეგიძლიათ დაგვიკავშირდეთ შემდეგი საშუალებებით:</p>
+            <ul class="contact-info">
+                <li><strong>ელ-ფოსტა:</strong> {{ email }}</li>
+                <li><strong>ტელეფონი:</strong> {{ phone }}</li>
+            </ul>
+        {% else %}
+            <p>ინფორმაცია მიუწვდომელია. გთხოვთ, სცადოთ მოგვიანებით.</p>
+        {% endif %}
+    </section>
+{% endblock %}
